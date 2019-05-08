@@ -1,0 +1,31 @@
+.mat-row:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+table {
+  overflow: auto;
+  max-height: 500px;
+  width: 100%;
+}
+
+.mat-column-right {
+  text-align: center;
+}
+.watcherDrpdwn {
+  position: absolute;
+  top: 40px;
+  left: -20px;
+  border: 1px solid red;
+  background: burlywood;
+  z-index: 1;
+  width: max-content;
+}
+
+.watcher-cell {
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}

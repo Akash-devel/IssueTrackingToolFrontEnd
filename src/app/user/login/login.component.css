@@ -1,0 +1,29 @@
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }
+
+.or-separator_contain {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.or-separator_flex {
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.or-separator_word {
+    text-align: center;
+}
+
+.or-separator {
+    width: 40%;
+}

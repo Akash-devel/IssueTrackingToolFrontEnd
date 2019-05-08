@@ -1,0 +1,44 @@
+<div>
+    <br>
+    <mat-card>
+      <section class="mat-typography">
+        <h3>Issue Details</h3>
+      </section>
+      <mat-divider></mat-divider>
+      <br>
+      <form [formGroup]="updateForm" class="edit-form">
+  
+        <mat-form-field class="field-full-width">
+          <input matInput placeholder="Issue Title" formControlName="title" #title readonly>
+        </mat-form-field>
+  
+  
+        <p-editor placeholder="Add some descrption" formControlName="description"
+          [style]="{'height':'320px'}" #description readonly="true"></p-editor>
+  
+  
+        <br>
+        <mat-form-field>
+          <mat-select placeholder="Assigned to" formControlName="assignee" #assignee>
+            <mat-option *ngFor="let assignee of assignedToArray" [value]="assignee" > {{assignee}} </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <br>
+        <mat-form-field>
+          <mat-select placeholder="Status" formControlName="status" #status >
+            <mat-option value="Backlog">Backlog</mat-option>
+            <mat-option value="In Progress">In Progress</mat-option>
+            <mat-option value="Testing">Testing</mat-option>
+            <mat-option value="Done">Done</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-divider></mat-divider>
+        <br><br>
+  
+        <button mat-raised-button color="accent" routerLink="/User-Dashboard">Go Back</button>&nbsp;&nbsp;
+       
+      </form>
+    </mat-card>
+  </div>

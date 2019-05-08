@@ -1,0 +1,73 @@
+<div class="container-fluid">
+
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" style="color: white">Issue Track Tool</a>
+    <form class="form-inline">
+
+      <button pButton type="button" class="ui-button-raised ui-button-rounded ui-button-secondary"
+        label="Log-in"></button>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <button pButton type="button" class="ui-button-raised ui-button-rounded ui-button-secondary"
+        (click)="goToRegister()" label="Register"></button>
+    </form>
+  </nav>
+</div>
+
+<!--Form Box div-->
+<div class="container" style="padding-top:10px;">
+
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card mx-4">
+        <div class="card-body p-4">
+
+          <h3 style="text-align:center">Login here</h3><br>
+          <!--Form Start-->
+          <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+
+            <!--Email-->
+            <div class="form-group">
+              <span style="font-weight: bold">Email: </span>
+              <input type="email" name="inputEmail" [(ngModel)]="inputEmail" class="form-control"
+                placeholder="email@example.com" #email="ngModel" required
+                pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$">
+            </div>
+            <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+
+              <div [hidden]="!email.errors.required"> Please enter a email </div>
+              <div [hidden]="!email.errors.pattern"> Please enter a valid email address </div>
+            </div>
+
+            <!--Password-->
+            <div class="form-group">
+              <span style="font-weight: bold">Password: </span>
+              <input type="password" name="inputPassword" [(ngModel)]="inputPassword" class="form-control"
+                placeholder="Password" #pwd="ngModel" required>
+            </div>
+            <div *ngIf="pwd.errors && (pwd.dirty || pwd.touched)" class="alert alert-danger">
+              <div [hidden]="!pwd.errors.required"> Please enter a password </div>
+            </div>
+
+            <button type="button" class="btn btn-block btn-primary" [disabled]="!loginForm.form.valid"
+              (click)="loginFunction()">Sign In</button>
+          </form>
+          <!--End of Form-->
+          <div class="dropdown-divider"></div>
+          <a [routerLink]="['/forgot-password']" style="font-weight: bold; color: blue"> Forgot password?</a>
+
+          <br><br>
+
+          <button (click)="socialSignIn('facebook')" class="btn btn-fb"><i class="fab fa-facebook-f pr-1"></i> Sign in
+            with Facebook</button>
+          &nbsp;&nbsp;&nbsp;
+          <button (click)="socialSignIn('google')" class="btn btn-gplus"><i class="fab fa-google-plus-g pr-1"></i>Sign
+            in with Google</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<!--Container div end-->

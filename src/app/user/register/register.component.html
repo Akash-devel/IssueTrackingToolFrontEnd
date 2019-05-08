@@ -1,0 +1,95 @@
+<div class="container-fluid">
+
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" style="color: white">Issue Track Tool</a>
+    <form class="form-inline">
+
+      <button pButton type="button" class="ui-button-raised ui-button-rounded ui-button-secondary" (click)="goTologin()"
+        label="Log-in"></button>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <button pButton type="button" class="ui-button-raised ui-button-rounded ui-button-secondary"
+        label="Register"></button>
+    </form>
+  </nav>
+</div>
+
+<!-- Signup Box -->
+<div class="container" style="padding-top:10px;">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card mx-4">
+        <div class="card-body p-4">
+
+          <h2 style="text-align:center">Register Here</h2><br>
+
+          <!--Form Start-->
+          <form #signUpForm="ngForm" (ngSubmit)="onSubmit(signUpForm.value)">
+
+            <!--Full Name-->
+            <div class="form-group">
+              <span style="font-weight: bold">Full Name: </span>
+
+              <input type="text" name="inputFullName" [(ngModel)]="inputFullName" class="form-control"
+                placeholder="Full Name" #fullName="ngModel" required minlength="4">
+            </div>
+
+            <div *ngIf="fullName.errors && (fullName.dirty || fullName.touched)" class="alert alert-danger">
+
+              <div [hidden]="!fullName.errors.minlength"> Please enter atleast 4 characters. </div>
+              <div [hidden]="!fullName.errors.required"> Please enter the Full Name </div>
+            </div>
+
+            <!--Email-->
+            <div class="form-group">
+              <span style="font-weight: bold">Email: </span>
+
+              <input type="email" name="inputEmail" [(ngModel)]="inputEmail" class="form-control"
+                placeholder="email@example.com" #email="ngModel" required
+                pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$">
+            </div>
+            <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+
+              <div [hidden]="!email.errors.required"> Please enter a email </div>
+              <div [hidden]="!email.errors.pattern"> Please enter a valid email address </div>
+
+            </div>
+
+            <!--Password-->
+            <div class="form-group">
+              <span style="font-weight: bold">Password: </span>
+              <input type="password" name="inputPassword" [(ngModel)]="inputPassword" class="form-control"
+                placeholder="Password" #pwd="ngModel" required
+                pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$">
+
+            </div>
+            <div *ngIf="pwd.errors && (pwd.dirty || pwd.touched)" class="alert alert-danger">
+
+              <div [hidden]="!pwd.errors.required"> Please enter password </div>
+              <div [hidden]="!pwd.errors.pattern"> Password must contain a minimum of 8 characters,
+                at least 1 letter, 1 number and 1 special character! </div>
+            </div>
+
+            <!--Confirm Password-->
+            <div class="form-group">
+              <span style="font-weight: bold">Confirm Password: </span>
+              <input type="password" name="confirmPwd" [(ngModel)]="confirmPwd" class="form-control"
+                placeholder="Password" #confirmPassword="ngModel" required>
+            </div>
+            <div *ngIf="confirmPassword.errors && (confirmPassword.dirty || confirmPassword.touched)"
+              class="alert alert-danger">
+
+              <div [hidden]="!confirmPassword.errors.required"> Please confirm the password!</div>
+
+            </div>
+
+            <button type="button" class="btn btn-block btn-primary" [disabled]="!signUpForm.form.valid"
+              (click)="signupFunction()">Sign Up</button>
+          </form>
+          <!--End of Form-->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Container div end-->
